@@ -52,121 +52,118 @@ const PaymentPage = () => {
   }
 
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center bg-white px-4 py-12">
-      
-      {/* Header + Logo */}
-      <div className="relative w-full max-w-5xl mb-8 px-4">
-        <div className="absolute top-0 right-0">
-          <img
-            src="/images/turtle-logo.png"
-            alt="Turtle Logo"
-            className="h-16 w-auto sm:h-20"
-          />
-        </div>
-        <div className="text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-[#2EDEBE] sm:text-4xl mb-2">
-            Complete Your Payment
-          </h1>
-          <p className="text-gray-600">Choose your payment method below</p>
-        </div>
+    <div className="min-h-screen bg-white px-4 py-12">
+      {/* Logo top-right */}
+      <div className="flex justify-between items-start max-w-6xl mx-auto px-4">
+        <div></div>
+        <img
+          src="/images/turtle-logo.png"
+          alt="Turtle Logo"
+          className="h-12 sm:h-16 w-auto"
+        />
       </div>
 
-      {/* Main Payment Card */}
-      <Card className="max-w-3xl w-full border-0 shadow-lg">
-        <CardContent className="p-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Payment Location */}
-            <div>
-              <h2 className="text-xl font-medium mb-4">Payment Location</h2>
-              <div className="space-y-3">
-                <div
-                  className={`flex items-center p-4 rounded-md border cursor-pointer transition-all ${
-                    paymentLocation === "india" ? "border-[#0047AB] bg-[#EEF2FF]" : "border-gray-200"
-                  }`}
-                  onClick={() => setPaymentLocation("india")}
-                >
-                  <div
-                    className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 ${
-                      paymentLocation === "india" ? "bg-[#0047AB]" : "border border-gray-300"
-                    }`}
-                  >
-                    {paymentLocation === "india" && <div className="w-2 h-2 bg-white rounded-full" />}
-                  </div>
-                  <div className="flex items-center">
-                    <IndianRupee className="h-5 w-5 text-[#0047AB] mr-2" />
-                    <span>Paying from India</span>
-                  </div>
-                </div>
+      {/* Centered Heading */}
+      <div className="text-center mt-2 mb-8 px-4">
+        <h1 className="text-3xl font-bold tracking-tight text-[#2EDEBE] sm:text-4xl mb-2">
+          Complete Your Payment
+        </h1>
+        <p className="text-gray-600">Choose your payment method below</p>
+      </div>
 
-                <div
-                  className={`flex items-center p-4 rounded-md border cursor-pointer transition-all ${
-                    paymentLocation === "international" ? "border-[#0047AB] bg-[#EEF2FF]" : "border-gray-200"
-                  }`}
-                  onClick={() => setPaymentLocation("international")}
-                >
+      {/* Payment Card */}
+      <div className="flex justify-center">
+        <Card className="max-w-3xl w-full border-0 shadow-lg">
+          <CardContent className="p-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Location */}
+              <div>
+                <h2 className="text-xl font-medium mb-4">Payment Location</h2>
+                <div className="space-y-3">
                   <div
-                    className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 ${
-                      paymentLocation === "international" ? "bg-[#0047AB]" : "border border-gray-300"
+                    className={`flex items-center p-4 rounded-md border cursor-pointer transition-all ${
+                      paymentLocation === "india" ? "border-[#0047AB] bg-[#EEF2FF]" : "border-gray-200"
                     }`}
+                    onClick={() => setPaymentLocation("india")}
                   >
-                    {paymentLocation === "international" && <div className="w-2 h-2 bg-white rounded-full" />}
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 ${
+                      paymentLocation === "india" ? "bg-[#0047AB]" : "border border-gray-300"
+                    }`}>
+                      {paymentLocation === "india" && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                    </div>
+                    <div className="flex items-center">
+                      <IndianRupee className="h-5 w-5 text-[#0047AB] mr-2" />
+                      <span>Paying from India</span>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <CreditCard className="h-5 w-5 text-[#0047AB] mr-2" />
-                    <span>Paying from Outside India</span>
+
+                  <div
+                    className={`flex items-center p-4 rounded-md border cursor-pointer transition-all ${
+                      paymentLocation === "international" ? "border-[#0047AB] bg-[#EEF2FF]" : "border-gray-200"
+                    }`}
+                    onClick={() => setPaymentLocation("international")}
+                  >
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 ${
+                      paymentLocation === "international" ? "bg-[#0047AB]" : "border border-gray-300"
+                    }`}>
+                      {paymentLocation === "international" && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                    </div>
+                    <div className="flex items-center">
+                      <CreditCard className="h-5 w-5 text-[#0047AB] mr-2" />
+                      <span>Paying from Outside India</span>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* Method */}
+              <div>
+                {paymentLocation === "india" && (
+                  <>
+                    <h2 className="text-xl font-medium mb-4">Payment Method</h2>
+                    <div className="flex mb-6">
+                      <button
+                        className={`flex-1 py-2 transition-all ${
+                          paymentMethod === "qr-upi"
+                            ? "bg-white border-t border-l border-r border-gray-200 text-[#0047AB]"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
+                        onClick={() => setPaymentMethod("qr-upi")}
+                      >
+                        QR Code & UPI
+                      </button>
+                      <button
+                        className={`flex-1 py-2 transition-all ${
+                          paymentMethod === "bank"
+                            ? "bg-white border-t border-l border-r border-gray-200 text-[#0047AB]"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
+                        onClick={() => setPaymentMethod("bank")}
+                      >
+                        Bank Transfer
+                      </button>
+                    </div>
+                    <div className="bg-white p-4 rounded-md border border-gray-200">
+                      {paymentMethod === "qr-upi" ? <QRCodeAndUPI /> : <BankTransferDetails />}
+                    </div>
+                  </>
+                )}
+
+                {paymentLocation === "international" && <InternationalPayment />}
+              </div>
             </div>
 
-            {/* Payment Method */}
-            <div>
-              {paymentLocation === "india" && (
-                <>
-                  <h2 className="text-xl font-medium mb-4">Payment Method</h2>
-                  <div className="flex mb-6">
-                    <button
-                      className={`flex-1 py-2 transition-all ${
-                        paymentMethod === "qr-upi"
-                          ? "bg-white border-t border-l border-r border-gray-200 text-[#0047AB]"
-                          : "bg-gray-100 text-gray-600"
-                      }`}
-                      onClick={() => setPaymentMethod("qr-upi")}
-                    >
-                      QR Code & UPI
-                    </button>
-                    <button
-                      className={`flex-1 py-2 transition-all ${
-                        paymentMethod === "bank"
-                          ? "bg-white border-t border-l border-r border-gray-200 text-[#0047AB]"
-                          : "bg-gray-100 text-gray-600"
-                      }`}
-                      onClick={() => setPaymentMethod("bank")}
-                    >
-                      Bank Transfer
-                    </button>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-md border border-gray-200">
-                    {paymentMethod === "qr-upi" ? <QRCodeAndUPI /> : <BankTransferDetails />}
-                  </div>
-                </>
-              )}
-
-              {paymentLocation === "international" && <InternationalPayment />}
+            <div className="mt-8 text-center">
+              <Button
+                onClick={handlePaymentComplete}
+                className="bg-green-500 hover:bg-green-600 text-white px-10 py-6 text-lg rounded-md shadow-md transition-all"
+              >
+                Payment Completed
+              </Button>
             </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <Button
-              onClick={handlePaymentComplete}
-              className="bg-green-500 hover:bg-green-600 text-white px-10 py-6 text-lg rounded-md shadow-md transition-all"
-            >
-              Payment Completed
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
