@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -6,15 +5,16 @@ import { useToast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
 import { Check } from "lucide-react";
 
-// Placeholder QR code image - replace with your actual QR code in a real implementation
+// QR and UPI info
 const QR_CODE_URL = "https://placehold.co/300x300/EEF2FF/4F46E5?text=QR+Code";
-const UPI_ID = "yourbusiness@upi";
+const UPI_ID = "turtle.ml@axl";
+
+// Bank details
 const BANK_DETAILS = {
-  accountName: "Your Business Name",
-  accountNumber: "1234567890123456",
-  ifscCode: "ABCD0123456",
-  bankName: "Your Bank Name",
-  branch: "Your Branch Location",
+  accountName: "Mukund Lahoty",
+  accountNumber: "50100233410920",
+  ifscCode: "HDFC0001098",
+  bankName: "HDFC Bank",
 };
 
 const IndianPaymentOption = () => {
@@ -29,7 +29,7 @@ const IndianPaymentOption = () => {
         description: `${fieldName} has been copied.`,
         duration: 2000,
       });
-      
+
       setTimeout(() => {
         setCopiedField(null);
       }, 2000);
@@ -44,13 +44,14 @@ const IndianPaymentOption = () => {
           <TabsTrigger value="upi">UPI ID</TabsTrigger>
           <TabsTrigger value="bank">Bank Details</TabsTrigger>
         </TabsList>
-        
+
+        {/* QR Code Tab */}
         <TabsContent value="qr" className="space-y-4 min-h-[360px]">
           <div className="flex flex-col items-center">
             <div className="bg-white p-4 rounded-lg shadow-sm border mb-4">
-              <img 
-                src={QR_CODE_URL} 
-                alt="Payment QR Code" 
+              <img
+                src={QR_CODE_URL}
+                alt="Payment QR Code"
                 className="w-64 h-64 object-cover"
               />
             </div>
@@ -59,16 +60,19 @@ const IndianPaymentOption = () => {
             </p>
           </div>
         </TabsContent>
-        
+
+        {/* UPI Tab */}
         <TabsContent value="upi" className="min-h-[360px]">
           <div className="flex flex-col items-center pt-10">
             <div className="bg-payment-light-blue p-6 rounded-lg w-full max-w-md mb-6 text-center">
               <p className="text-lg font-medium mb-2">UPI ID</p>
               <div className="flex items-center justify-center gap-2 p-3 bg-white rounded border">
-                <span className="text-xl font-semibold text-payment-blue">{UPI_ID}</span>
+                <span className="text-xl font-semibold text-payment-blue">
+                  {UPI_ID}
+                </span>
               </div>
             </div>
-            <Button 
+            <Button
               onClick={() => copyToClipboard(UPI_ID, "UPI ID")}
               className="flex items-center gap-2"
               variant="outline"
@@ -86,41 +90,109 @@ const IndianPaymentOption = () => {
             </p>
           </div>
         </TabsContent>
-        
+
+        {/* Bank Details Tab */}
         <TabsContent value="bank" className="space-y-6 min-h-[360px]">
           <div className="bg-payment-light-blue p-6 rounded-lg w-full">
-            <h3 className="font-medium text-lg mb-4 text-center">Bank Transfer Details</h3>
-            
-            {Object.entries(BANK_DETAILS).map(([key, value], index) => (
-              <div key={key}>
-                <div className="flex justify-between items-center py-3">
-                  <div className="text-gray-600 capitalize">
-                    {key.replace(/([A-Z])/g, ' $1').trim()}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium">{value}</span>
-                    <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className="h-8 px-2"
-                      onClick={() => copyToClipboard(value.toString(), key)}
-                    >
-                      {copiedField === key ? (
-                        <Check className="h-3 w-3 text-payment-success" />
-                      ) : (
-                        "Copy"
-                      )}
-                    </Button>
-                  </div>
-                </div>
-                {index < Object.entries(BANK_DETAILS).length - 1 && <Separator />}
+            <h3 className="font-medium text-lg mb-4 text-center">
+              Bank Transfer Details
+            </h3>
+
+            {/* Account Name */}
+            <div className="flex justify-between items-center py-3">
+              <div className="text-gray-600">Account Name</div>
+              <div className="flex items-center gap-2">
+                <span className="font-medium">{BANK_DETAILS.accountName}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2"
+                  onClick={() =>
+                    copyToClipboard(BANK_DETAILS.accountName, "Account Name")
+                  }
+                >
+                  {copiedField === "Account Name" ? (
+                    <Check className="h-3 w-3 text-payment-success" />
+                  ) : (
+                    "Copy"
+                  )}
+                </Button>
               </div>
-            ))}
+            </div>
+            <Separator />
+
+            {/* Account Number */}
+            <div className="flex justify-between items-center py-3">
+              <div className="text-gray-600">Account Number</div>
+              <div className="flex items-center gap-2">
+                <span className="font-medium">{BANK_DETAILS.accountNumber}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2"
+                  onClick={() =>
+                    copyToClipboard(BANK_DETAILS.accountNumber, "Account Number")
+                  }
+                >
+                  {copiedField === "Account Number" ? (
+                    <Check className="h-3 w-3 text-payment-success" />
+                  ) : (
+                    "Copy"
+                  )}
+                </Button>
+              </div>
+            </div>
+            <Separator />
+
+            {/* IFSC Code */}
+            <div className="flex justify-between items-center py-3">
+              <div className="text-gray-600">IFSC Code</div>
+              <div className="flex items-center gap-2">
+                <span className="font-medium">{BANK_DETAILS.ifscCode}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2"
+                  onClick={() =>
+                    copyToClipboard(BANK_DETAILS.ifscCode, "IFSC Code")
+                  }
+                >
+                  {copiedField === "IFSC Code" ? (
+                    <Check className="h-3 w-3 text-payment-success" />
+                  ) : (
+                    "Copy"
+                  )}
+                </Button>
+              </div>
+            </div>
+            <Separator />
+
+            {/* Bank Name */}
+            <div className="flex justify-between items-center py-3">
+              <div className="text-gray-600">Bank Name</div>
+              <div className="flex items-center gap-2">
+                <span className="font-medium">{BANK_DETAILS.bankName}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2"
+                  onClick={() =>
+                    copyToClipboard(BANK_DETAILS.bankName, "Bank Name")
+                  }
+                >
+                  {copiedField === "Bank Name" ? (
+                    <Check className="h-3 w-3 text-payment-success" />
+                  ) : (
+                    "Copy"
+                  )}
+                </Button>
+              </div>
+            </div>
           </div>
-          
+
           <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-600">
             <p>
-              After making the bank transfer, please click the "Payment Completed" 
+              After making the bank transfer, please click the "Payment Completed"
               button below and share the transaction reference number if available.
             </p>
           </div>

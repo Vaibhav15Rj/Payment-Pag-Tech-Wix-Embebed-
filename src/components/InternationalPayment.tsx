@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
 // Replace this with your actual Razorpay payment link
-const RAZORPAY_LINK = "https://rzp.io/your-payment-link";
+const RAZORPAY_LINK = "https://pages.razorpay.com/pl_QVqdshsEY7fnwy/view";
 
 const InternationalPayment = () => {
   const handleRazorpayClick = () => {

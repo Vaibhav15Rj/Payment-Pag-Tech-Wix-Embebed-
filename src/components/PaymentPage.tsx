@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ const PaymentPage = () => {
   const [paymentLocation, setPaymentLocation] = useState<"india" | "international">("india");
   const [paymentMethod, setPaymentMethod] = useState<"qr-upi" | "bank">("qr-upi");
   const { toast } = useToast();
-  
+
   const handlePaymentComplete = () => {
     setPaymentSubmitted(true);
     toast({
@@ -53,16 +52,25 @@ const PaymentPage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white px-4 py-12">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-[#0047AB] sm:text-4xl mb-2">
-          Complete Your Payment
-        </h1>
-        <p className="text-gray-600">
-          Choose your payment method below
-        </p>
+    <div className="min-h-screen relative flex flex-col items-center justify-center bg-white px-4 py-12">
+      {/* Logo on Top Right */}
+      <div className="absolute top-6 right-8">
+        <img
+          src="/images/turtle-logo.png"
+          alt="Turtle Logo"
+          className="h-24 w-auto object-contain"
+        />
       </div>
 
+      {/* Header Centered */}
+      <div className="w-full max-w-3xl mb-8 text-center">
+        <h1 className="text-3xl font-bold tracking-tight text-[#2EDEBE] sm:text-4xl mb-2">
+          Complete Your Payment
+        </h1>
+        <p className="text-gray-600">Choose your payment method below</p>
+      </div>
+
+      {/* Main Payment Card */}
       <Card className="max-w-3xl w-full border-0 shadow-lg">
         <CardContent className="p-6">
           <div className="grid md:grid-cols-2 gap-6">
@@ -106,7 +114,7 @@ const PaymentPage = () => {
               </div>
             </div>
 
-            {/* Payment Method Selection */}
+            {/* Payment Method Section */}
             <div>
               {paymentLocation === "india" && (
                 <>

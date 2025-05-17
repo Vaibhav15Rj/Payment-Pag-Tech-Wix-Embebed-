@@ -6,11 +6,10 @@ import { useToast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
 
 const BANK_DETAILS = {
-  accountName: "Your Business Name",
-  accountNumber: "1234567890123456",
-  ifscCode: "ABCD0123456",
-  bankName: "Your Bank Name",
-  branch: "Your Branch Location",
+  accountName: "Mukund Lahoty c/o Turtle",
+  accountNumber: "50100233410920",
+  ifscCode: "HDFC0001098",
+  bankName: "HDFC Bank",
 };
 
 const BankTransferDetails = () => {

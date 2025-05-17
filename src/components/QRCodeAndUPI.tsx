@@ -1,8 +1,9 @@
 
 import React from "react";
 
-const QR_CODE_URL = "https://placehold.co/300x300/EEF2FF/0047AB?text=QR+Code";
-const UPI_ID = "yourbusiness@upi";
+const QR_CODE_URL = "/images/qr-code.jpg";
+
+const UPI_ID = "turtle.ml@axl";
 
 const QRCodeAndUPI = () => {
   return (
