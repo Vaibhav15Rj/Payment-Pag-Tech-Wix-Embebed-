@@ -153,14 +153,7 @@ const PaymentPage = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <Button
-              onClick={handlePaymentComplete}
-              className="bg-green-500 hover:bg-green-600 text-white px-10 py-6 text-lg rounded-md shadow-md transition-all"
-            >
-              Payment Completed
-            </Button>
-          </div>
+
         </CardContent>
       </Card>
     </div>
