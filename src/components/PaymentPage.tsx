@@ -62,13 +62,6 @@ const PaymentPage = () => {
           </h1>
           <p className="text-gray-600">Choose your payment method below</p>
         </div>
-        <div className="ml-4">
-          <img
-            src="/images/turtle-logo.png"
-            alt="Turtle Logo"
-            className="h-16 w-auto sm:h-20 md:h-24"
-          />
-        </div>
       </div>
 
       {/* Main Payment Card */}
