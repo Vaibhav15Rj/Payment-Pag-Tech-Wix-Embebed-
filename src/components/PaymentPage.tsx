@@ -52,7 +52,7 @@ const PaymentPage = () => {
   }
 
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center bg-white px-4 py-12">
+    <div className="h-screen overflow-hidden flex flex-col items-center justify-center bg-white px-4 py-12">
       
       {/* Header Logo and Title in Flex Row */}
       <div className="w-full max-w-5xl flex items-center justify-between px-4 mb-8">
