@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
 
 const BANK_DETAILS = {
-  accountName: "Mukund Lahoty c/o Turtle",
+  accountName: "Mukund Lahoty",
   accountNumber: "50100233410920",
   ifscCode: "HDFC0001098",
   bankName: "HDFC Bank",

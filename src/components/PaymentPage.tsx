@@ -54,13 +54,12 @@ const PaymentPage = () => {
   return (
     <div className="h-screen overflow-hidden flex flex-col items-center justify-center bg-white px-4 py-12">
       
-      {/* Header Logo and Title in Flex Row */}
+      {/* Header Title */}
       <div className="w-full max-w-5xl flex items-center justify-between px-4 mb-8">
         <div className="flex-1 text-center">
           <h1 className="text-3xl font-bold tracking-tight text-[#2EDEBE] sm:text-4xl mb-2">
             Complete Your Payment
           </h1>
-          <p className="text-gray-600">Choose your payment method below</p>
         </div>
       </div>
 
@@ -71,8 +70,9 @@ const PaymentPage = () => {
             
             {/* Payment Location Selection */}
             <div>
-              <h2 className="text-xl font-medium mb-4">Payment Location</h2>
+              <h2 className="text-xl font-medium mb-4">Payment Option</h2>
               <div className="space-y-3">
+                {/* India Option */}
                 <div 
                   className={`flex items-center p-4 rounded-md border cursor-pointer transition-all ${
                     paymentLocation === "india" ? "border-[#0047AB] bg-[#EEF2FF]" : "border-gray-200"
@@ -90,6 +90,7 @@ const PaymentPage = () => {
                   </div>
                 </div>
                 
+                {/* International Option */}
                 <div 
                   className={`flex items-center p-4 rounded-md border cursor-pointer transition-all ${
                     paymentLocation === "international" ? "border-[#0047AB] bg-[#EEF2FF]" : "border-gray-200"
@@ -136,6 +137,14 @@ const PaymentPage = () => {
                       Bank Transfer
                     </button>
                   </div>
+
+                  {/* ✅ Bank Transfer Note */}
+                  {paymentMethod === "bank" && (
+                    <p className="text-sm text-gray-600 mb-4 text-center">
+                      Please use the bank details below to transfer your payment via <strong>NEFT</strong> or <strong>RTGS</strong>.
+                    </p>
+                  )}
+
                   <div className="bg-white p-4 rounded-md border border-gray-200">
                     {paymentMethod === "qr-upi" ? <QRCodeAndUPI /> : <BankTransferDetails />}
                   </div>
@@ -145,8 +154,6 @@ const PaymentPage = () => {
               {paymentLocation === "international" && <InternationalPayment />}
             </div>
           </div>
-
-
         </CardContent>
       </Card>
     </div>
