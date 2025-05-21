@@ -158,7 +158,7 @@ const PaymentPage = () => {
       For international payments, we use Razorpay which accepts all major credit cards, debit cards, and other payment methods.
     </p>
     <a
-      href="https://razorpay.com" // ← update to your live Razorpay link
+      href="https://pages.razorpay.com/pl_QVqdshsEY7fnwy/view" // ← update to your live Razorpay link
       target="_blank"
       rel="noopener noreferrer"
       className="bg-[#0047AB] text-white text-sm font-medium px-6 py-2 rounded hover:bg-[#003a91] transition"
