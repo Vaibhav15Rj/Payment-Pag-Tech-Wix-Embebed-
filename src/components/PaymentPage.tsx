@@ -66,7 +66,7 @@ const PaymentPage = () => {
       {/* Main Payment Card */}
       <Card className="max-w-3xl w-full border-0 shadow-lg">
         <CardContent className="p-6">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 h-full">
             
             {/* Payment Location Selection */}
             <div>
@@ -151,7 +151,23 @@ const PaymentPage = () => {
                 </>
               )}
 
-              {paymentLocation === "international" && <InternationalPayment />}
+              {paymentLocation === "international" && (
+  <div className="p-4 rounded-md border border-gray-200 flex flex-col justify-center items-center min-h-[420px]">
+    <h3 className="text-lg font-semibold mb-2">Pay via Razorpay</h3>
+    <p className="text-sm text-gray-600 mb-4 text-center max-w-xs">
+      For international payments, we use Razorpay which accepts all major credit cards, debit cards, and other payment methods.
+    </p>
+    <a
+      href="https://razorpay.com" // ← update to your live Razorpay link
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-[#0047AB] text-white text-sm font-medium px-6 py-2 rounded hover:bg-[#003a91] transition"
+    >
+      Make Payment&nbsp;↗
+    </a>
+  </div>
+)}
+
             </div>
           </div>
         </CardContent>
