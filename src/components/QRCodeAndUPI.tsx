@@ -12,7 +12,7 @@ const QRCodeAndUPI = () => {
         <img 
           src={QR_CODE_URL} 
           alt="Payment QR Code" 
-          className="w-64 h-64 object-cover"
+          className="w-52 h-52 object-cover"
         />
       </div>
       <p className="text-center text-gray-600">

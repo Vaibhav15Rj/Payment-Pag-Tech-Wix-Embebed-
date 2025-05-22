@@ -66,7 +66,8 @@ const PaymentPage = () => {
       {/* Main Payment Card */}
       <Card className="max-w-3xl w-full border-0 shadow-lg">
         <CardContent className="p-6">
-          <div className="grid md:grid-cols-2 gap-6 h-full">
+          <div className="grid md:grid-cols-2 gap-6 min-h-[500px]">
+
             
             {/* Payment Location Selection */}
             <div>
