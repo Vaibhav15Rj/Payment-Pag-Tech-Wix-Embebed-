@@ -57,7 +57,7 @@ const PaymentPage = () => {
       {/* Header Title */}
       <div className="w-full max-w-5xl flex items-center justify-between px-4 mb-8">
         <div className="flex-1 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-[#2EDEBE] sm:text-4xl mb-2">
+          <h1 className="text-3xl font-bold tracking-tight text-[#2EDEBE] sm:text-3xl mb-2">
             Complete Your Payment
           </h1>
         </div>
