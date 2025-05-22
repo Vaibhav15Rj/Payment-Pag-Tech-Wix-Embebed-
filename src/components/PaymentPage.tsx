@@ -54,14 +54,7 @@ const PaymentPage = () => {
   return (
     <div className="h-screen overflow-hidden flex flex-col items-center justify-center bg-white px-4 py-12">
       
-      {/* Header Title */}
-      <div className="w-full max-w-5xl flex items-center justify-between px-4 mb-8">
-        <div className="flex-1 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-[#2EDEBE] sm:text-4xl mb-2">
-            Complete Your Payment
-          </h1>
-        </div>
-      </div>
+  
 
       {/* Main Payment Card */}
       <Card className="max-w-3xl w-full border-0 shadow-lg">
